@@ -18,7 +18,7 @@ comunicados <- comunicados_path %>%
     ~read_lines(here::here("data", "comunicados", .x)) %>% 
       as.tibble() %>% 
       filter(value != "") %>% 
-      mutate(date = str_extract(.x, "....."), 
+      mutate(date = str_extract(.x, "^....."), 
              paragraph = 1:length(date)) %>% 
       separate(col = date, into = c("mes", "year"))
     ) %>% 
