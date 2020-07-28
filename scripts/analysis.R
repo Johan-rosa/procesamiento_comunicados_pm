@@ -6,6 +6,7 @@ library(janitor)
 library(here)
 library(tm)
 library(SentimentAnalysis)
+library(tidytext)
 
 # Código para crear el set de datos usando los txt,
 # no hay que correrlo otra vez
@@ -305,7 +306,7 @@ sector_expectativa <- elasticidad_indicador_incertidumbre_expectativas %>%
     ggplot(aes(x = elasticidad, y = variable_expectativa)) +
     #scale_y_reverse() +
     ggridges::geom_density_ridges(fill = "midnightblue", alpha = 0.6) + 
-    facet_wrap(~str_to_title(sector)) +
+    facet_wrap(~str_to_title(sector), scales = "free_x") +
     theme_light() +
     labs(y = NULL, x = "Elasticidad"))
   
